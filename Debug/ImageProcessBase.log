@@ -1,5 +1,6 @@
 ﻿  ImageProcessBaseDlg.cpp
+d:\ku\grade 2 (2017)\soc robotwar\imageprocessbase\imageprocessbasedlg.cpp(243): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 ImageProcessBase.obj : warning LNK4258: '/entry:WinMainCRTStartup' 지시문은 '/ENTRY:wWinMainCRTStartup' 스위치와 호환되지 않습니다. 무시됩니다.
 ImageProcessBaseDlg.obj : warning LNK4258: '/entry:WinMainCRTStartup' 지시문은 '/ENTRY:wWinMainCRTStartup' 스위치와 호환되지 않습니다. 무시됩니다.
-  ImageProcessBase.vcxproj -> C:\Users\DH Kim\Desktop\ImageProcessBase\Debug\ImageProcessBase.exe
-  ImageProcessBase.vcxproj -> C:\Users\DH Kim\Desktop\ImageProcessBase\Debug\ImageProcessBase.pdb (Partial PDB)
+  ImageProcessBase.vcxproj -> D:\KU\Grade 2 (2017)\Soc RobotWar\ImageProcessBase\Debug\ImageProcessBase.exe
+  ImageProcessBase.vcxproj -> D:\KU\Grade 2 (2017)\Soc RobotWar\ImageProcessBase\Debug\ImageProcessBase.pdb (Partial PDB)

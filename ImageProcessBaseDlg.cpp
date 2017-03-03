@@ -240,8 +240,8 @@ LRESULT CALLBACK CallbackOnFrame(HWND hWnd, LPVIDEOHDR lpVHdr)
 
 	for (j = 0; j < nHeight; j++) { 
 		for (i = 0; i < nWidth; i++) { 
-			if (RGB[j][i][RED] < 50 && RGB[j][i][BLUE] < 50 && RGB[j][i][GREEN] < 50)
-			RGB[j][i][RED] = RGB[j][i][GREEN] = RGB[j][i][BLUE] = 255;
+			int t=0.2126*RGB[j][i][RED]+0.7152*RGB[j][i][GREEN]+0.0722*RGB[j][i][BLUE];
+			RGB[j][i][RED]=RGB[j][i][GREEN]=RGB[j][i][BLUE]=t;
 			}
 		}
 
