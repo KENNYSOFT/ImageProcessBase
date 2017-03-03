@@ -218,52 +218,11 @@ LRESULT CALLBACK CallbackOnFrame(HWND hWnd, LPVIDEOHDR lpVHdr)
 	nHeight = 480;
 
 
-	// YUY2 ---> RGB
+	// YUY2 Grayscale
 	for (j = 0; j < nHeight; j++) { // height
 		for (i = 0; i < nWidth; i += 2) { //width
-			Y0 = lpVHdr->lpData[(nWidth*j + i) * 2];
-			U = lpVHdr->lpData[(nWidth*j + i) * 2 + 1];
-			Y1 = lpVHdr->lpData[(nWidth*j + i) * 2 + 2];
-			V = lpVHdr->lpData[(nWidth*j + i) * 2 + 3];
-
-			RGB[j][i][RED] = (int)CLIP(Y0 + (1.4075*(V - 128)));
-			RGB[j][i][GREEN] = (int)CLIP(Y0 - 0.3455*(U - 128) - 0.7169*(V - 128));
-			RGB[j][i][BLUE] = (int)CLIP(Y0 + 1.7790*(U - 128));
-			RGB[j][i + 1][RED] = (int)CLIP(Y1 + (1.4075*(V - 128)));
-			RGB[j][i + 1][GREEN] = (int)CLIP(Y1 - 0.3455*(U - 128) - 0.7169*(V - 128));
-			RGB[j][i + 1][BLUE] = (int)CLIP(Y1 + 1.7790*(U - 128));
-		}
-	}
-
-/////////////////////////////////////////////////////////////////////////////////
-	// RGB영상처리부분
-
-	for (j = 0; j < nHeight; j++) { 
-		for (i = 0; i < nWidth; i++) { 
-			int t=0.2126*RGB[j][i][RED]+0.7152*RGB[j][i][GREEN]+0.0722*RGB[j][i][BLUE];
-			RGB[j][i][RED]=RGB[j][i][GREEN]=RGB[j][i][BLUE]=t;
-			}
-		}
-
-
-
-//////////////////////////////////////////////////////////////////////////////////
-
-// RGB ---> YUY2 
-
-	for (j = 0; j < nHeight; j++) { // height
-		for (i = 0; i < nWidth; i += 2) { //width
-
-			Y0 = (int)CLIP(0.2999*RGB[j][i][RED] + 0.587*RGB[j][i][GREEN] + 0.114*RGB[j][i][BLUE]);
-			Y1 = (int)CLIP(0.2999*RGB[j][i + 1][RED] + 0.587*RGB[j][i + 1][GREEN] + 0.114*RGB[j][i + 1][BLUE]);
-			U = (int)CLIP(-0.1687*RGB[j][i][RED] - 0.3313*RGB[j][i][GREEN] + 0.5*RGB[j][i][BLUE] + 128.0);
-			V = (int)CLIP(0.5*RGB[j][i][RED] - 0.4187*RGB[j][i][GREEN] - 0.0813*RGB[j][i][BLUE] + 128.0);
-
-			lpVHdr->lpData[(nWidth*j + i) * 2] = Y0;
-			lpVHdr->lpData[(nWidth*j + i) * 2 + 1] = U;
-			lpVHdr->lpData[(nWidth*j + i) * 2 + 2] = Y1;
-			lpVHdr->lpData[(nWidth*j + i) * 2 + 3] = V;
-
+			lpVHdr->lpData[(nWidth*j + i) * 2 + 1] = 128;
+			lpVHdr->lpData[(nWidth*j + i) * 2 + 3] = 128;
 		}
 	}
 	return (LRESULT)true;
